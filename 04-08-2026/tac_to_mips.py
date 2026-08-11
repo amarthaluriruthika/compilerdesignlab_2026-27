@@ -1,5 +1,5 @@
 """
-Three-Address Code (triples) to MIPS generator.
+Three-An.py      README.md   ddress Code (triples) to MIPS generator.
 
 Read docs/register_allocation_reference.md and
 docs/mips_spim_reference.md before editing this file.
