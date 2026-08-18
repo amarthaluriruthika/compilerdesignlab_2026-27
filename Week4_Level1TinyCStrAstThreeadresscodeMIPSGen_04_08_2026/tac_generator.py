@@ -43,7 +43,7 @@ class TACGenerator:
         if isinstance(stmt, Assign):
            operand = self.gen_expr(stmt.expr)
            self.program.append(AssignTriple(stmt.var.name, operand))
-        elif  isinstance(stmt, Print):
+        if  isinstance(stmt, Print):
             operand = self.gen_expr(stmt.expr)
             self.program.append(PrintTriple(operand))
         
@@ -76,9 +76,9 @@ class TACGenerator:
         """
         if isinstance(node, Num):
             return str(node.value)      
-        elif isinstance(node, Var):
+        if isinstance(node, Var):
             return node.name              
-        elif isinstance(node, BinOp):
+        if isinstance(node, BinOp):
             left  = self.gen_expr(node.left)
             right = self.gen_expr(node.right)
             return self.program.append(BinOpTriple(node.op, left, right))
