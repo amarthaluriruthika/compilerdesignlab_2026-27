@@ -1,0 +1,10 @@
+int main(){
+double a,b;
+string c;
+a=98.12;
+b=0.7867;
+
+c=(a+b)>a?"True":"False";
+print c;
+}
+
