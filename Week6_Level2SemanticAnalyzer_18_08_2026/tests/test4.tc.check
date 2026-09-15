@@ -1,0 +1,9 @@
+No type errors found.
+
+Type-checked AST (with any inserted casts):
+Function main
+  Assign
+    Var(a)
+    Const(10,DataType.INT)
+  Print
+    Var(a)

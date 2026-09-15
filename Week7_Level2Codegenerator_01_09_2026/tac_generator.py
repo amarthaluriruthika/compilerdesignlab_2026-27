@@ -94,7 +94,11 @@ class TACGenerator:
         comparison itself). See docs/typed_3ac_reference.md if this
         distinction isn't clear.
         """
-        raise NotImplementedError("implement TACGenerator.gen_relop()")
+        left = self.gen_expr(node.left)
+        right = self.gen_expr(node.right)
+        return self.program.append(RelOpTriple(node.op, left, right, node.left.result_type))
+
+       # raise NotImplementedError("implement TACGenerator.gen_relop()")
 
     def gen_cast(self, node):
         """
@@ -107,7 +111,11 @@ class TACGenerator:
             return self.program.append(
                 CastTriple(node.expr.result_type, node.target_type, arg))
         """
-        raise NotImplementedError("implement TACGenerator.gen_cast()")
+        arg = self.gen_expr(node.expr)
+        return self.program.append(
+                CastTriple(node.expr.result_type, node.target_type, arg))
+
+        #raise NotImplementedError("implement TACGenerator.gen_cast()")
 
     def gen_ternary(self, node):
         """
@@ -124,7 +132,14 @@ class TACGenerator:
                 SelectTriple(cond, node.cond.result_type, then_val, else_val,
                              node.result_type))
         """
-        raise NotImplementedError("implement TACGenerator.gen_ternary()")
+        cond = self.gen_expr(node.cond)
+        then_val = self.gen_expr(node.then_expr)
+        else_val = self.gen_expr(node.else_expr)
+        return self.program.append(
+                SelectTriple(cond, node.cond.result_type, then_val, else_val,
+                    node.result_type))
+
+        #raise NotImplementedError("implement TACGenerator.gen_ternary()")
 
 
 def generate_for_function(function):
